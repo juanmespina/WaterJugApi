@@ -30,7 +30,6 @@ public class WaterJugGameController : ControllerBase
             biggerJug = new WaterJug(waterJugParams.x, "x");
         }
 
-
         if (waterJugParams.z % smallerJug.MaxQtyGallons != 0)
         {
             return BadRequest("Not solution");
@@ -39,7 +38,7 @@ public class WaterJugGameController : ControllerBase
 
         List<WaterJugsState> jugStates = new List<WaterJugsState>();
         jugStates.Add(
-            new WaterJugsState(smallerJug.CurrentAmount, biggerJug.CurrentAmount,
+            new WaterJugsState(smallerJug, biggerJug,
             "Inicial state")
             );
 
@@ -59,7 +58,7 @@ public class WaterJugGameController : ControllerBase
             {
                 smallerJug.CurrentAmount = smallerJug.MaxQtyGallons;
                 jugStates.Add(
-                 new WaterJugsState(smallerJug.CurrentAmount, biggerJug.CurrentAmount,
+                 new WaterJugsState(smallerJug, biggerJug,
                 $"Fill bucket {smallerJug.Name}"));
                 continue;
             }
@@ -72,7 +71,7 @@ public class WaterJugGameController : ControllerBase
                 biggerJug.CurrentAmount = smallerJug.CurrentAmount + biggerJug.CurrentAmount;
                 smallerJug.CurrentAmount = 0;
                 jugStates.Add(
-                 new WaterJugsState(smallerJug.CurrentAmount, biggerJug.CurrentAmount,
+                 new WaterJugsState(smallerJug, biggerJug,
                 $"Transfer bucket {smallerJug.Name} to bucket {biggerJug.Name}"));
                 continue;
             }

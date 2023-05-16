@@ -1,6 +1,6 @@
 namespace WaterJugGame
 {
-    class WaterJug
+    public class WaterJug
     {
         public readonly int MaxQtyGallons;
         public int CurrentAmount { get; set; }

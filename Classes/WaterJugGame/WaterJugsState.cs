@@ -2,10 +2,21 @@ namespace WaterJugGame
 {
     public class WaterJugsState
     {
-        public WaterJugsState(int x, int y, string explanation)
+
+        public WaterJugsState(WaterJug smallerJug, WaterJug biggerJug, string explanation)
         {
-            X = x;
-            Y = y;
+            if (smallerJug.Name == "x")
+            {
+                X = smallerJug.CurrentAmount;
+                Y = biggerJug.CurrentAmount;
+
+            }
+            else
+            {
+                X = biggerJug.CurrentAmount;
+                Y = smallerJug.CurrentAmount;
+            }
+
             Explanation = explanation;
         }
 
